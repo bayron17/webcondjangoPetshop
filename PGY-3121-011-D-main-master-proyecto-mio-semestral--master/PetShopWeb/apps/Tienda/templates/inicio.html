@@ -1,0 +1,157 @@
+{% extends './base.html' %}
+{% load static %}
+
+
+
+{% block body %}
+
+<!-- INICIO DE HEADING -->
+<div id="contBienv" class="contBienv p-3 mb-2 bg-light text-emphasis-warning">
+    <div class="d-flex p-2">
+        <h2>Bienvenidos a PetShop! <span class="containerTitulo badge bg-danger">Encuentra variedades de productos en nuestra
+                tienda</span></h2>
+    </div>
+
+</div>
+<!-- FIN DE HEADING -->
+
+    <!-- PRODUCTOS -->
+    <div class="container">
+        <div class="row mt-5">
+            <h2>Sección Perros</h2>
+            {% for p in cate_perro %}
+            <div class="col">
+                <div class="item" style="width: 18rem;">
+                    <span class="titulo-item">{{p.nombre}}</span>
+                    <img class="img-item" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMiD5Pok-AUxVw7tye7MrVfqvlOKnbSixcb_AzHhdfbb2RII3MvlKdDo4XgCgVx2axutY&usqp=CAU" alt="">
+                    <p class="card-text">{{p.descripcion}}</p>
+                    <span class="precio-item btn-primary">{{p.precio}}</span>
+                    <button class="boton-item">Agregar</button>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="row mt-5">
+            <h2>Sección Gatos</h2>
+            {% for p in cate_gato %}
+            <div class="col">
+                <div class="item" style="width: 18rem;">
+                    <span class="titulo-item">{{p.nombre}}</span>
+                    <img class="img-item" src="data:image/jpeg;base64,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" alt="">
+                    <p class="card-text">{{p.descripcion}}</p>
+                    <span class="precio-item btn-primary">{{p.precio}}</span>
+                    <button class="boton-item">Agregar</button>
+                </div>
+        </div>
+            {% endfor %}
+            
+        </div>
+    </div>
+
+    <div class="carrito">
+
+        <div class="header-carrito">
+            <h2>tu carrito</h2>
+        </div>
+
+        <div class="carrito-items">
+            <!-- 
+            <div class="carrito-item">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_cUKrNBAHhvLEdPAKJ0zH6k_RgS59jx0MgQ&usqp=CAU" alt="" width="80px">
+                <div class="carrito-item-detalles">
+                    <span class="carrito-item-titulo">Remedio otitis</span>
+
+                    <div class="selector-cantidad">
+                        <i class="fa-solid fa-minus restar-cantidad"></i>
+                        <input class="carrito-item-cantidad" type="text" value="1" disabled>
+                        <i class="fa-solid fa-plus sumar-cantidad"></i>
+                        <span class="carrito-item-precio">$14.000</span>
+                    </div>
+
+                </div>
+                <span class="btn-eliminar">
+                    <i class="fa-solid fa-trash"></i>
+                </span>
+            </div>
+
+            <div class="carrito-item">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHoMDhIZtwwNs4Sq0A8b0h_dI0L598UUbwlg&usqp=CAU" alt="" width="80px">
+                <div class="carrito-item-detalles">
+                    <span class="carrito-item-titulo">Bolsa residuo</span>
+
+                    <div class="selector-cantidad">
+                        <i class="fa-solid fa-minus restar-cantidad"></i>
+                        <input class="carrito-item-cantidad" type="text" value="2" disabled>
+                        <i class="fa-solid fa-plus sumar-cantidad"></i>
+                        <span class="carrito-item-precio">$1.000</span>
+                    </div>
+
+                </div>
+                <span class="btn-eliminar">
+                    <i class="fa-solid fa-trash"></i>
+                </span>
+            </div>
+             -->
+        </div>
+
+        <div class="carrito-total">
+            <div class="fila">
+                <strong>Tu Total</strong>
+                <span class="carrito-precio-total">$16.000</span>
+            </div>
+            <button class="btn-pagar">Pagar <i class="fa-solid fa-bag-shopping"></i></button>
+        </div>
+
+</div>
+    
+    <!--  CONTENEDOR CON TIPS DE CUIDADO-->
+    <div id="contTips" class="containerTips text-center my-5 mx-5">
+        <div class="row align-items-start">
+        <div class="col">
+    
+            <div id="descTips">
+    
+            <h1>Tips de gran ayuda para el cuidados de nuestros peluditos</h1>
+    
+            </div>
+    
+        </div>
+        <div class="col">
+    
+            <div id="img" class="contimgtips">
+            <img src="{% static 'img/tipsCuidadosMascota.png'%}" alt="">
+    
+            </div>
+        </div>
+        </div>
+    </div>
+    <!-- FIN CONTENEDOR CON TIPS DE CUIDADO-->
+    
+    
+        <section id="sectionNosotros" class="my-5">
+        
+            <div class="containerNosotros">
+            <h4>QUIENES SOMOS!</h4>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, in eos quae inventore adipisci sunt id corporis
+            debitis esse! Quos delectus reprehenderit sint reiciendis vel quod suscipit? Id, omnis temporibus.
+            Sapiente praesentium nam ex voluptate nulla quam facere excepturi, mollitia dignissimos repudiandae repellat
+            assumenda voluptatibus nesciunt et facilis ipsam similique molestias, odio soluta accusantium quae temporibus iure
+            consequatur! Maiores, provident?
+            Quos blanditiis error, ipsam quis nostrum nulla laudantium dolor delectus vitae dolorum, veniam doloribus explicabo
+            eaque itaque voluptatibus sequi, repellendus sint. Quas, inventore earum nostrum optio eius reprehenderit? Esse,
+            dolorem.
+            Facere est at fugit velit commodi! Quasi perspiciatis, eaque similique accusamus, sunt, facilis exercitationem
+            mollitia laboriosam a quidem dolore! Magnam tempore sunt sint distinctio? Officia sapiente sed totam? A, accusamus?
+            Corporis commodi illo necessitatibus similique repudiandae iste voluptatum incidunt ea, placeat recusandae aperiam
+            iure perspiciatis totam eveniet quam aspernatur porro minima molestiae accusamus ab reiciendis, maxime rem magnam
+            enim. Soluta.
+        
+            </div>
+        
+        </section>
+{% endblock %}
+
+{% block script %}
+<script src="{% static 'js/funciones.js' %}"></script>
+{% endblock %}
