@@ -1,7 +1,7 @@
 const temaOscuro = () => {
-    document.querySelector("#dl-icon").setAttribute("class","bx bx-sun icon sun");
+    document.querySelector("#dl-icon").setAttribute("class", "bx bx-sun icon sun");
 
-    document.querySelector("body").setAttribute("data-bs-theme","dark");
+    document.querySelector("body").setAttribute("data-bs-theme", "dark");
 
     let contenedor = document.querySelector("#contCarusel");
     contenedor.classList.add("bg-dark");
@@ -22,8 +22,9 @@ const temaOscuro = () => {
     contenedor5.classList.add("bg-dark");
 
     let contenedor6 = document.querySelector("#contenedorLogin");
-    contenedor6.classList.add("bg-dark")
+    contenedor6.classList.add("bg-dark");
 }
+
 
 const temaClaro = () => {
     document.querySelector("#dl-icon").setAttribute("class","bx bx-moon icon moon");

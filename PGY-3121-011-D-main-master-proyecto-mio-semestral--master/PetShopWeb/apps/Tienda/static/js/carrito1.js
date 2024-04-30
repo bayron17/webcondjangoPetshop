@@ -211,9 +211,10 @@ function agregarAlCarritoClicked(event){
 
     //CON ESTA FUNCION AGREGAMOS EL PRODUCTO SELECCIONADO AL CARRTIO . LE PASAMOS LOS VALORES POR PARAMETROS
     agregarItemAlCarrito(titulo,precio,imagenSrc);
-
     //HACEMOS VISIBLE EL CARRITO CUANDO AGREGA POR PRIMERA VEZ
     hacerVisibleCarrito();
+    actualizarTotalCarrito();
+
 }
 
 function agregarItemAlCarrito(titulo,precio,imagenSrc){
@@ -248,10 +249,13 @@ function agregarItemAlCarrito(titulo,precio,imagenSrc){
             <i class="fa-solid fa-trash"></i>
         </span>
     </div>
+    
     `
 
     item.innerHTML = itemCarritoContenido;
     itemsCarrito.append(item);
+    
+
 
     //AGREGAMOS LA FUNCIONALIDAD DE ELIMINAR DEL NUEVO ITEMS
     item.getElementsByClassName('btn-eliminar')[0].addEventListener('click',EliminarItemCarrito);   
@@ -263,6 +267,9 @@ function agregarItemAlCarrito(titulo,precio,imagenSrc){
         //AGREGAMOS LA FUNCIONALIDAD DE RESTAR DEL NUEVO ITEMS
         var botonRestarCantidad =item.getElementsByClassName('restar-cantidad')[0];
         botonRestarCantidad.addEventListener('click',restarCantidad);   
+
+        actualizarTotalCarrito();
+
 }
 
 function pagarClicked(event){

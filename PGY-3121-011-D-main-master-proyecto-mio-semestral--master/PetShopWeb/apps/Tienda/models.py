@@ -20,7 +20,7 @@ class Producto(models.Model):
     fecha_ingreso = models.DateField(auto_now_add=True)
     fecha_vencimiento = models.DateField(null=True,blank=True)
     categoria_id = models.ForeignKey(Categoria,on_delete=models.CASCADE)
-    image_url = models.ImageField(upload_to="txtImg")
+    image_url = models.ImageField(upload_to="imagenesProductos")
 
     def __str__(self):
         txt = "N° {0} - Nombre: {1} - Stock: {2} - fecha: {3}"  
