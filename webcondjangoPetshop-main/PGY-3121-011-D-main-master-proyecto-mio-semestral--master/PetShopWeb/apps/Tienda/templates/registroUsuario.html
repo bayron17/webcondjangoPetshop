@@ -1,0 +1,77 @@
+{% extends './base.html' %}
+{% load static %}
+
+    {% comment %}
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/styleRegistro.css">
+    <title>Registro de Usuario</title> {% endcomment %}
+    {%block head %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styleRegistro.css' %}">
+    {% endblock %}
+  {% block body %}
+  
+  <div class="container mt-5">
+
+    <form action="#" id="miFormulario">
+
+      <div class="row">
+
+        <div class="col-xl-8 my-2">
+          
+          <label id="txtRut">Rut</label>
+          <input  type="text" class="form-control" placeholder="12.123.123-2" name="rut">
+          
+        </div>
+        <br>
+        <div class="col-xl-8 my-2">
+          
+          <label id="txtNombre">Nombre completo</label>
+          <input type="text " class="form-control" placeholder="nombre completa" name="nombre">
+          
+        </div>
+        <div class="col-xl-8 my-2">
+
+          <label id="txtDireccion">Direccion</label>
+          <input  type="text" class="form-control" placeholder="Ingrese Direccion" name="direccion">
+          
+
+        </div>
+        <div class="col-xl-8 my-2">
+
+          <label id="txtComuna">Comuna</label>
+          <input  type="text" class="form-control" placeholder="Ingrese comuna" name="comuna">
+          
+        </div>
+        <div class="col-xl-8 my-2">
+          
+          <label id="txtCorreo">Correo</label>
+          <input  type="text" class="form-control" placeholder="ejemplo@ejemplo.com" name="correo">
+          
+        </div>
+        <div class="col-xl-8 my-2 ">
+          
+          <label id="txtNumero">Telefono</label>
+          <input  type="text" class="form-control" placeholder="912345678" name="numero">
+          
+        </div>
+
+        <br>
+        <div id="colBtn" class="col-xl-8 my-2">
+          <button  class="btn btn-primary my-3 w-50" id="btnRegistrar" >registrar</button>
+        </div>
+       
+      </div>
+    </form>
+  </div>
+
+
+{% endblock %}
+
+{% block script %}
+<script src="{% static 'js/jquery.js' %}"></script> 
+
+{% endblock %}
+
+
