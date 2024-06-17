@@ -1,89 +1,12 @@
 
 
-// const carInfo = document.querySelector('.card')
-// const rowProduct = document.querySelector('.row')
-
-// //lista de todos los contenedores de productos
-// const productsList = document.querySelector('.container-items')
-
-// //variable de arreglo del producto
-// let allProductos = []
-
-
-// productsList.addEventListener('click',e =>{
-
-//     if(e.target.classList.contains('btn')){
-//         const product = e.target.parentElement
-
-//         const infoProduct ={
-//             quantity: 1,
-//             title: product.querySelector('.card-title').textContent,
-//             price:  product.querySelector('.carrito-item-precio').textContent,
-//         }
-
-//         allProductos = [...allProductos,infoProduct]
-//     }
-
-//     console.log(allProductos)
-// })
-
-// // funcion para mostrar html
-
-// const showHtml = () =>{
-//     allProductos.forEach(product => {
-//         const containerProduct = document.createElement('div')
-//         containerProduct.classList.add('container-items')
-
-//         // containerProduct.innerHTML =
-//     })
-// }
-
-
-
-// const carInfo = document.querySelector('.card')
-// const rowProduct = document.querySelector('.row')
-
-// //lista de todos los contenedores de productos
-// const productsList = document.querySelector('.container-items')
-
-// //variable de arreglo del producto
-// let allProductos = []
-
-
-// productsList.addEventListener('click',e =>{
-
-//     if(e.target.classList.contains('btn')){
-//         const product = e.target.parentElement
-
-//         const infoProduct ={
-//             quantity: 1,
-//             title: product.querySelector('.card-title').textContent,
-//             price:  product.querySelector('.carrito-item-precio').textContent,
-//         }
-
-//         allProductos = [...allProductos,infoProduct]
-//     }
-
-//     console.log(allProductos)
-// })
-
-// // funcion para mostrar html
-
-// const showHtml = () =>{
-//     allProductos.forEach(product => {
-//         const containerProduct = document.createElement('div')
-//         containerProduct.classList.add('container-items')
-
-//         // containerProduct.innerHTML =
-//     })
-// }
-
 //variable que mantienen visible el estado del carrito
 var carritoVisible = false;
 
 // esperamos que todos los elementos de la pagina se carguen con el script
 if(document.readyState == 'loading'){
     document.addEventListener('DOMContentLoaded',ready)
+
 }else{
     ready();
 }
@@ -221,7 +144,6 @@ function agregarItemAlCarrito(titulo,precio,imagenSrc){
     var item = document.createElement('div');
     item.classList.add = 'item';
     var itemsCarrito = document.getElementsByClassName('carrito-items')[0];
-
     //CONTROLAMOS QUE EL ITEM QUE ESTAMOS AGREGANDO NO SE ENCUENTRE YA AGREGADO 
     var nombresItemsCarrito = itemsCarrito.getElementsByClassName('carrito-item-titulo');
     for(var i=0; i < nombresItemsCarrito.length; i++){
@@ -230,6 +152,7 @@ function agregarItemAlCarrito(titulo,precio,imagenSrc){
             return;
         }
     }
+    actualizarTotalCarrito();
 
     var itemCarritoContenido = `
         <div class="carrito-item">
@@ -249,7 +172,6 @@ function agregarItemAlCarrito(titulo,precio,imagenSrc){
             <i class="fa-solid fa-trash"></i>
         </span>
     </div>
-    
     `
 
     item.innerHTML = itemCarritoContenido;
@@ -286,13 +208,28 @@ function pagarClicked(event){
     ocultarCarrito();
 }
 
-function hacerVisibleCarrito(){
-   carritoVisible = true;
-   var carrito = document.getElementsByClassName('carrito')[0];
-   carrito.style.marginRight = '0';
-   carrito.style.opacity = '1';
+function hacerVisibleCarrito() {
+    // Asumo que carritoVisible es una variable global que controla el estado de visibilidad del carrito
+    var carritoVisible = true;
 
-   var items = document.getElementsByClassName('contenedor-items')[0];
-   items.style.width = '60%';
+    // Obtener el elemento del carrito y verificar si existe
+    var carrito = document.querySelector('.carrito');
+    if (carrito) {
+        carrito.style.marginRight = '0';
+        carrito.style.opacity = '1';
+    } else {
+        console.error('No se encontró el elemento con clase "carrito"');
+        return; // Salir de la función si no se encuentra el carrito
+    }
+
+    // Obtener el contenedor de items y verificar si existe
+    var items = document.querySelector('.contenedor-items');
+    if (items) {
+        items.style.width = '60%';
+    } else {
+        console.error('No se encontró el elemento con clase "contenedor-items"');
+        return; // Salir de la función si no se encuentra el contenedor de items
+    }
 }
+
 

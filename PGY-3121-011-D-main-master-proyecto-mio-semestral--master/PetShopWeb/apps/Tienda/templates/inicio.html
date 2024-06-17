@@ -1,6 +1,12 @@
 {% extends './base.html' %}
 {% load static %}
 
+{% block head%}
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+{% endblock %}
+
+
+
 
 
 {% block body %}
@@ -100,8 +106,14 @@
                 <strong>Tu Total</strong>
                 <span class="carrito-precio-total">$</span>
             </div>
-            <button class="btn-pagar">Pagar <i class="fa-solid fa-bag-shopping"></i></button>
-        </div>
+            <div class="filaPagar">
+                <button class="btn-pagar">Pagar <i class="fa-solid fa-bag-shopping"></i></button>
+                <div id="btnaPaypal" style="margin-top:20px; background:#ecc93f; border-radius:5px; font-size: 18px; justify-content: space-between; align-items: center;
+                 cursor: pointer; transition: .3s; display: flex; padding: 20px;   ">
+                    <a style="color:#290bd3; text-decoration: none;" href="{% url 'iniciar_pago' %}">PayPal <i class="fa-solid fa-bag-shopping"></i></a></div>        
+                </div>
+            </div>
+            
 
 </div>
     
@@ -153,5 +165,10 @@
 {% endblock %}
 
 {% block script %}
+
 <script src="{% static 'js/funciones.js' %}"></script>
+<script src="https://www.paypal.com/sdk/js?client-id=AUqWSpVdUQQ2or32ecLA8jEqoWBGI7a3wqDqGdMG2vlfjCm45NHtuwtOg6-68usNWrli7-SlH2ZyXV0V"
+  data-sdk-integration-source="developer-studio"></script>
+
 {% endblock %}
+

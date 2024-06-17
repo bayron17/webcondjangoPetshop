@@ -9,9 +9,19 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-
 from pathlib import Path
+import os
 
+# Configuración de PayPal Sandbox
+
+PAYPAL_CLIENT_ID = 'AUqWSpVdUQQ2or32ecLA8jEqoWBGI7a3wqDqGdMG2vlfjCm45NHtuwtOg6-68usNWrli7-SlH2ZyXV0V'
+PAYPAL_SECRET = 'EEVfxzyt78HCiFPEyk1TcTojoRNOU2eSvIVzcaXoVpuRcPthmNjBlQzoybVR3Wt5wlESa1S2e5JB3WdU'
+
+# Opcional: Configura sandbox o producción
+PAYPAL_MODE = 'sandbox'  # 'sandbox' o 'live'
+
+PAYPAL_RECEIVER_EMAIL = 'sb-tg0hd30691210@business.example.com'
+PAYPAL_TEST = True
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -37,7 +47,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'apps.Tienda'
+    'apps.Tienda',
+    'paypal.standard.ipn',
+    
 ]
 
 MIDDLEWARE = [
@@ -117,8 +129,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media/'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

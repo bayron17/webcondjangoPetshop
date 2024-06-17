@@ -1,79 +1,69 @@
+const agregarClaseTema = (selector, clase) => {
+    const elemento = document.querySelector(selector);
+    if (elemento) {
+        elemento.classList.add(clase);
+    }
+};
+
+const removerClaseTema = (selector, clase) => {
+    const elemento = document.querySelector(selector);
+    if (elemento) {
+        elemento.classList.remove(clase);
+    }
+};
+
 const temaOscuro = () => {
     document.querySelector("#dl-icon").setAttribute("class", "bx bx-sun icon sun");
-
     document.querySelector("body").setAttribute("data-bs-theme", "dark");
 
-    let contenedor = document.querySelector("#contCarusel");
-    contenedor.classList.add("bg-dark");
-
-    let contenedor1 = document.querySelector("#contBienv");
-    contenedor1.classList.add("bg-dark");
-
-    let contenedor2 = document.querySelector("#contenedorNavbar");
-    contenedor2.classList.add("bg-dark");
-
-    let contenedor3 = document.querySelector("#productos");
-    contenedor3.classList.add("bg-dark");
-
-    let contenedor4 = document.querySelector("#contTips");
-    contenedor4.classList.add("bg-dark");
-
-    let contenedor5 = document.querySelector("#sectionNosotros");
-    contenedor5.classList.add("bg-dark");
-
-    let contenedor6 = document.querySelector("#contenedorLogin");
-    contenedor6.classList.add("bg-dark");
-}
-
+    agregarClaseTema("#contCarusel", "bg-dark");
+    agregarClaseTema("#contBienv", "bg-dark");
+    agregarClaseTema("#contenedorNavbar", "bg-dark");
+    agregarClaseTema("#productos", "bg-dark");
+    agregarClaseTema("#contTips", "bg-dark");
+    agregarClaseTema("#sectionNosotros", "bg-dark");
+    agregarClaseTema("#contenedorLogin", "bg-dark");
+};
 
 const temaClaro = () => {
-    document.querySelector("#dl-icon").setAttribute("class","bx bx-moon icon moon");
+    document.querySelector("#dl-icon").setAttribute("class", "bx bx-moon icon moon");
+    document.querySelector("body").setAttribute("data-bs-theme", "light");
 
-    document.querySelector("body").setAttribute("data-bs-theme","light");
+    removerClaseTema("#contCarusel", "bg-dark");
+    agregarClaseTema("#contCarusel", "bg-light");
 
-    let contenedor = document.querySelector("#contCarusel");
-    contenedor.classList.remove("bg-dark");
-    contenedor.classList.add("bg-light");
+    removerClaseTema("#contBienv", "bg-dark");
+    agregarClaseTema("#contBienv", "bg-light");
 
-    let contenedor1 = document.querySelector("#contBienv");
-    contenedor1.classList.remove("bg-dark");
-    contenedor1.classList.add("bg-light");
+    removerClaseTema("#contenedorNavbar", "bg-dark");
+    agregarClaseTema("#contenedorNavbar", "bg-light");
 
-    let contenedor2 = document.querySelector("#contenedorNavbar");
-    contenedor2.classList.remove("bg-dark");
-    contenedor2.classList.add("bg-light");
+    removerClaseTema("#productos", "bg-dark");
+    agregarClaseTema("#productos", "bg-light");
 
-    let contenedor3 = document.querySelector("#productos");
-    contenedor3.classList.remove("bg-dark");
-    contenedor3.classList.add("bg-light");
+    removerClaseTema("#contTips", "bg-dark");
+    agregarClaseTema("#contTips", "bg-light");
 
-    let contenedor4 = document.querySelector("#contTips");
-    contenedor4.classList.remove("bg-dark");
-    contenedor4.classList.add("bg-light");
+    removerClaseTema("#sectionNosotros", "bg-dark");
+    agregarClaseTema("#sectionNosotros", "bg-light");
 
-    let contenedor5 = document.querySelector("#sectionNosotros");
-    contenedor5.classList.remove("bg-dark");
-    contenedor5.classList.add("bg-light");
-
-    let contenedor6 = document.querySelector("#contenedorLogin");
-    contenedor6.classList.remove("bg-dark");
-    contenedor6.classList.add("bg-light")   
-}
+    removerClaseTema("#contenedorLogin", "bg-dark");
+    agregarClaseTema("#contenedorLogin", "bg-light");
+};
 
 const cambiarTema = () => {
-    document.querySelector("body").getAttribute("data-bs-theme") === "light"?
-    temaOscuro() : temaClaro()
+    const temaActual = document.querySelector("body").getAttribute("data-bs-theme");
+    if (temaActual === "light") {
+        temaOscuro();
+    } else {
+        temaClaro();
+    }
+};
 
-
-}
-
+// Código para mostrar la hora local en tiempo real
 const time = document.getElementById("time");
-
 const interval = setInterval(() => {
-
     const local = new Date();
-
-
-
     time.innerHTML = local.toLocaleTimeString();
-}, 1000)
+}, 1000);
+

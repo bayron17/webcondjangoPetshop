@@ -4,11 +4,12 @@
 *{
     margin: 0;
     padding: 0;
-    font-family: 'open Sans';
+    font-family: 'Open Sans';
 }
 /* fin fuentes */
 
 /* navbar */
+
 
 /* MODIFIamos y alineamos el boton de registrar usuaio */
 .containerbtn button{
@@ -46,9 +47,9 @@
 
 body{
     /* SIRVE PARA MOVER FOOTER HACIA ABAJO*/
-    display: grid; 
-    min-height: 100vh; 
-    grid-template-rows: auto 1fr auto;  
+    display: grid;
+    min-height: 100vh;
+    grid-template-rows: auto 1fr auto;
 }
 
 /* INICIO CSS FOOTER */
@@ -58,7 +59,7 @@ body{
 
 #fondo{
     height: 100%;
-    width: 100%; 
+    width: 100%;
     background-image: linear-gradient(to top, rgba(243, 241, 247, 0.5) 0%, rgba(240, 235, 238, 0.5) 100%),url(../img/fondofooterpetshop.jpg);
 }
 
@@ -78,9 +79,9 @@ body{
 
 /* INICIO CSS CONTENEDOR TIPS */
 .containerTips{
-    background-color: rgb(252, 251, 251); 
+    background-color: rgb(252, 251, 251);
     width: 97%;
-    height: 100%; 
+    height: 100%;
 }
 
 .containerTips img{
@@ -99,8 +100,6 @@ body{
 /* FIN CSS CONTENEDOR TIPS */
 
 /*INICIO CSS LOGIN */
-
-
 #contenedorLogin{
     border: solid lightgray;
     height: 70vh;
@@ -111,7 +110,7 @@ body{
     width: 100%;
     display: flex;
     justify-content: center;
-   
+
 }
 
 #loginTitulo{
@@ -119,19 +118,19 @@ body{
 }
 
 .input-group{
-     padding: 5px; 
+     padding: 5px;
 }
 
 /*FIN CSS LOGIN */
 
 /* CONTENEDOR NOSOTROS */
 #sectionNosotros{
-    
+
     width: 97%;
     padding: 50px 10px;
     text-align: center;
-    background-color: rgb(252, 251, 251); 
-    
+    background-color: rgb(252, 251, 251);
+
 }
 
 /* contenedor reloj */
@@ -150,35 +149,6 @@ body{
 #time{
     padding: 5px 5px;
     font-family: 'open Sans';
-}
-
-#clima{
-    
-}
-
-/* reponsiva */
-@media screen and (max-width:850px){
-    .navbar{
-         display: block;
-    }
-    .containercol{
-        display: block;
-    }
-    #productos{
-        display: block;
-    }
-    .containerTips{
-        display: block;
-    }
-    #sectionNosotros{
-        display: block;
-    }
-    .contenedorDatos{
-        display: block;
-    }
-    #contBienv{
-        display: block;
-    }
 }
 
 /* ****************** PRODUCTOS *********************** */
@@ -262,7 +232,7 @@ body{
     transition: .3s;
     opacity: 0;
     margin-right: -100%;
-}  
+}
 
 .carrito .header-carrito{
     background-color: #000;
@@ -344,10 +314,6 @@ body{
     pointer-events: none;
 }
 
-.carrito-total{
-    background-color: #f3f3f3;
-    padding: 30px;
-}
 
 .carrito-total {
     display: flex;
@@ -356,6 +322,9 @@ body{
     font-size: 22px;
     font-weight: bold;
     margin-bottom: 10px;
+    background-color: #f3f3f3;
+    padding: 30px;
+
 }
 
 .carrito-total .btn-pagar{
@@ -363,10 +332,10 @@ body{
     width: 100%;
     border: none;
     background: #000;
-    color: #fff;
+    color: #f3f3f3;
     border-radius: 5px;
     font-size: 18px;
-    padding: 20px;  
+    padding: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -377,6 +346,7 @@ body{
 .carrito-total .btn-pagar :hover{
     scale: 1.05;
 }
+
 
 /* *********************** REPONSIVIDAD ******************** */
 
@@ -394,3 +364,31 @@ body{
         width: 100% !important;
     }
 }
+
+@media screen and (max-width:850px){
+    .navbar{
+         display: block;
+    }
+    .containercol{
+        display: block;
+    }
+    #productos{
+        display: block;
+    }
+    .containerTips{
+        display: block;
+    }
+    #sectionNosotros{
+        display: block;
+    }
+    .contenedorDatos{
+        display: block;
+    }
+    #contBienv{
+        display: block;
+    }
+}
+
+
+/* ANIMACIONES */
+

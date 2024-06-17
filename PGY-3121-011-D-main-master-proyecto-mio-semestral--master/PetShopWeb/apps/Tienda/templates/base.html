@@ -3,6 +3,7 @@
 <html lang="es">
 
 <head>
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,12 +14,16 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
-    {% load static %}    
+    {% load static %}   
+
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styleGlobal.css' %}">
+
     <title>Inicio</title>
     <link rel="Inicio icon" type="png" href="{% static 'img/petshop.png' %}">
-    {%block head %}
     
+    {%block head %}
+   
     {% endblock %}
 </head>
 
@@ -27,6 +32,41 @@
 
 
 <body onload="load()" data-bs-theme="light">
+
+    <button type="button" class="header-image btn btn-rimary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <img class="imgPromocion" src="{% static 'img/instagram.png' %}"  alt="Imagen de encabezado">
+    </button>
+    
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Mecanicos locos</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+            <!-- Contenido del modal -->
+            <p>
+                <div class="col">
+                    <div class="item" style="width: 18rem;">
+                        <span class="titulo-item">fd</span>
+                        <img class="img-item" src="" alt="">
+                        <p class="card-text">des</p>
+                        <span class="precio-item btn-primary">$</span>
+                        <button class="boton-item">Agregar</button>
+                    </div>
+                </div>
+            </p>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+        </div>
+    </div>
+    
     <!-- INICIO DE NAVBAR -->
     <div id="contenedorNavbar" class="p-3 mb-2  text-emphasis-warning">
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -148,6 +188,7 @@
 <script src="{% static 'js/app.js' %}" async></script>
 <script src="{% static 'js/carrito.js' %}"></script>
 <script src="{% static 'js/carrito1.js' %}"></script>
+
 
 {% comment %} <script src="{% static 'js/jquery.js' %}"></script>  {% endcomment %}
 

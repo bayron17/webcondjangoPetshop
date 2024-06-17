@@ -1,11 +1,10 @@
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render,redirect
 from .models import *
 import os
 from django.conf import settings
 import json
-
-from django.http import HttpResponse
-
+import paypalrestsdk
 # Create your views here.
 def Login(request):
     return render(request,'login.html')
@@ -42,10 +41,6 @@ def agregarProducto(request):
 
     return redirect('/agregarProducto')
 
-
-
-
-
 def cargarEditarProducto(request,sku):
     productos = Producto.objects.get(sku = sku)
     categorias = Categoria.objects.all()
@@ -55,8 +50,6 @@ def cargarEditarProducto(request,sku):
     productoCategoria = Categoria.objects.get(categoria_id = cateId.categoria_id).categoria_id
 
     return render(request,"editarProducto.html",{"prod":productos, "cate":categorias,"categoriaId":productoCategoria})
-
-
 
 def editarProductoForm(request):
     v_sku = request.POST['txtSku']
@@ -70,7 +63,6 @@ def editarProductoForm(request):
     else:
         v_fecha_vencimiento = request.POST['fechaVencimientoSel']
     v_categoria = Categoria.objects.get(categoria_id = request.POST['cmbCategoria'])
-
 
     try:
         v_image = request.FILES['txtImg']
@@ -88,10 +80,8 @@ def editarProductoForm(request):
     productoBD.image_url = v_image
     productoBD.categoria_id = v_categoria
 
-
     productoBD.save()
     return redirect('/agregarProducto')
-
 
 def eliminarProducto(request,sku):
     print("ELIMINAR PRODUCTO",sku)
@@ -101,7 +91,6 @@ def eliminarProducto(request,sku):
     producto.delete()
     return redirect('/agregarProducto')
 
-
 def carrito(request):
     #print("CARRITO",request.body)
     data = json.loads(request.body)
@@ -109,3 +98,58 @@ def carrito(request):
         print('SKU',p['sku'])
         print('CANBTIDAD',p['cantidad'])
     return HttpResponse("Ok!")
+
+# paypal
+paypalrestsdk.configure({
+    "mode": settings.PAYPAL_MODE,
+    "client_id": settings.PAYPAL_CLIENT_ID,
+    "client_secret": settings.PAYPAL_SECRET,
+})
+
+def iniciar_pago(request):
+    payment = paypalrestsdk.Payment({
+        "intent": "sale",
+        "payer": {
+            "payment_method": "paypal"
+        },
+        "redirect_urls": {
+            "return_url": "http://localhost:8000/payment/execute/",
+            "cancel_url": "http://localhost:8000/payment/cancel/"
+        },
+        "transactions": [{
+            "item_list": {
+                "items": [{
+                    "name": "Producto Ejemplo",
+                    "sku": "item001",
+                    "price": "25.00",
+                    "currency": "USD",
+                    "quantity": 1
+                }]
+            },
+            "amount": {
+                "total": "25.00",
+                "currency": "USD"
+            },
+            "description": "Compra de Producto Ejemplo"
+        }]
+    })
+
+    if payment.create():
+        for link in payment.links:
+            if link.rel == "approval_url":
+                approval_url = link.href
+                return HttpResponseRedirect(approval_url)
+    else:
+        return render(request, 'pagos/error.html', {'message': payment.error})
+    
+def ejecutar_pago(request):
+    payer_id = request.GET.get('PayerID')
+    payment_id = request.GET.get('paymentId')
+
+    payment = paypalrestsdk.Payment.find(payment_id)
+    if payment.execute({"payer_id": payer_id}):
+        # Pago ejecutado exitosamente
+        return render(request, 'pagos/pago_exitoso.html')
+    else:
+        # Error en la ejecución del pago
+        return render(request, 'pagos/error.html', {'message': payment.error})
