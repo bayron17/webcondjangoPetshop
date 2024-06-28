@@ -17,6 +17,14 @@
     animation: promociones 20s linear infinite !important;
 }
 
+/* modal background */
+.modal-body{
+    background-image: url(../img/promocionmechanic.png);
+}
+
+.hhhhhhhhh{
+    background-color: red;
+}
 
 @keyframes promociones {
     0% {
